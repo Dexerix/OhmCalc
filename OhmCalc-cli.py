@@ -1,12 +1,11 @@
 import math
 import os
-os.system("cls")
 
 class Ohm():
     def __init__(self) -> None:
         pass
 
-    def voltage():
+    def voltage(self):
         raw_r = input("Enter R : ")
         raw_i = input("Enter I : ")
         if "*" in raw_r:
@@ -34,7 +33,7 @@ class Ohm():
         u = float(r*i)
         print(u,"V")
             
-    def current():
+    def current(self):
         raw_r = input("Enter R : ")
         raw_u = input("Enter U : ")
         if "*" in raw_r:
@@ -61,7 +60,7 @@ class Ohm():
         i = float(u/r)
         print(i, "A")
     
-    def resistance():
+    def resistance(self):
         raw_i = input("Enter I : ")
         raw_u = input("Enter U : ")
         if "*" in raw_u:
@@ -114,5 +113,22 @@ def main():
     while not is_end_loop:
         os.system('cls')
         display_menu()
-        choix_usr = ask_user_choice("Your choice : ")
+        user_choice = ask_user_choice("Your choice : ")
+        user_choice = user_choice.lower()
         print()
+
+        if user_choice == "u":
+            ohms.voltage()
+            input()
+        elif user_choice == "r":
+            ohms.resistance()
+            input()
+        elif user_choice == "i":
+            ohms.current()
+            input()
+        elif user_choice == "q":
+            is_end_loop = True
+            os.system('cls')
+
+ohms = Ohm()
+main()
