@@ -7,8 +7,8 @@ class Ohm():
         pass
 
     def tension():
-        raw_r=input("Entrez R : ")
-        raw_i=input("Entrez I : ")
+        raw_r = input("Enter R : ")
+        raw_i = input("Enter I : ")
         if "*" in raw_r:
             splat_r = raw_r.split("*")
             mantisse_r = float(splat_r[0])
@@ -35,8 +35,8 @@ class Ohm():
         print(u,"V")
             
     def amperage():
-        raw_r = input("Entrez R : ")
-        raw_u = input("Entrez U : ")
+        raw_r = input("Enter R : ")
+        raw_u = input("Enter U : ")
         if "*" in raw_r:
             splat_r = raw_r.split("*")
             mantisse_r = float(splat_r[0])
@@ -62,8 +62,8 @@ class Ohm():
         print(i, "A")
     
     def resistence():
-        raw_i = input("Entrez I : ")
-        raw_u = input("Entrez U : ")
+        raw_i = input("Enter I : ")
+        raw_u = input("Enter U : ")
         if "*" in raw_u:
             splat_u = raw_u.split("*")
             mantisse_u = float(splat_u[0])
