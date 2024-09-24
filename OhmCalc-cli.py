@@ -6,7 +6,7 @@ class Ohm():
     def __init__(self) -> None:
         pass
 
-    def tension():
+    def voltage():
         raw_r = input("Enter R : ")
         raw_i = input("Enter I : ")
         if "*" in raw_r:
@@ -34,7 +34,7 @@ class Ohm():
         u = float(r*i)
         print(u,"V")
             
-    def amperage():
+    def current():
         raw_r = input("Enter R : ")
         raw_u = input("Enter U : ")
         if "*" in raw_r:
@@ -61,7 +61,7 @@ class Ohm():
         i = float(u/r)
         print(i, "A")
     
-    def resistence():
+    def resistance():
         raw_i = input("Enter I : ")
         raw_u = input("Enter U : ")
         if "*" in raw_u:
@@ -89,12 +89,12 @@ class Ohm():
         r = float(u/i)
         print(r, "Ω")
 
-def afficher_menu():
+def display_menu():
     menu = "===============================================\n"
     menu += "             Choose your formula\n"
     menu += "-----------------------------------------------\n"
-    menu += " U - tension\n"
-    menu += " R - resistence\n"
+    menu += " U - Voltage\n"
+    menu += " R - Resistance\n"
     menu += " I - Current\n"
     menu += "...\n"
     menu += ' Q - Quit\n'
@@ -102,17 +102,17 @@ def afficher_menu():
     print(menu)
 
 def ask_user_choice(question:str):
-    choix = input(question)
+    choice = input(question)
     try:
-        lettre_choix = choix
+        letter_choice = choice
     except:
         pass
-    return lettre_choix
+    return letter_choice
 
 def main():
-    if_fin_boucle = False
-    while not is_fin_boucle:
+    is_end_loop = False
+    while not is_end_loop:
         os.system('cls')
-        afficher_menu()
+        display_menu()
         choix_usr = ask_user_choice("Your choice : ")
         print()
