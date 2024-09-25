@@ -1,4 +1,3 @@
-import math
 import os
 
 class Ohm():
@@ -34,8 +33,8 @@ class Ohm():
         print(u,"V")
             
     def current(self):
-        raw_r = input("Enter R : ")
         raw_u = input("Enter U : ")
+        raw_r = input("Enter R : ")
         if "*" in raw_r:
             splat_r = raw_r.split("*")
             mantisse_r = float(splat_r[0])
@@ -61,8 +60,8 @@ class Ohm():
         print(i, "A")
     
     def resistance(self):
-        raw_i = input("Enter I : ")
         raw_u = input("Enter U : ")
+        raw_i = input("Enter I : ")
         if "*" in raw_u:
             splat_u = raw_u.split("*")
             mantisse_u = float(splat_u[0])
