@@ -33,6 +33,7 @@ class Ohm():
         print(u,"V")
             
     def amperage():
+        raw_u = input("Enter U : ")
         raw_r = input("Enter R : ")
         if "*" in raw_r:
             splat_r = raw_r.split("*")
@@ -59,6 +60,7 @@ class Ohm():
         print(i, "A")
     
     def resistence():
+        raw_u = input("Enter U : ")
         raw_i = input("Enter I : ")
         if "*" in raw_u:
             splat_u = raw_u.split("*")
@@ -86,7 +88,6 @@ class Ohm():
         print(r, "Ω")
 
 def display_menu():
-def display_menu():
     menu = "===============================================\n"
     menu += "             Choose your formula\n"
     menu += "-----------------------------------------------\n"
@@ -112,8 +113,6 @@ def ask_user_choice(question:str):
     return letter_choice
 
 def main():
-    is_end_loop = False
-    while not is_end_loop:
     is_end_loop = False
     while not is_end_loop:
         os.system('cls')
