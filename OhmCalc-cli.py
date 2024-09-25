@@ -4,7 +4,7 @@ class Ohm():
     def __init__(self) -> None:
         pass
 
-    def tension():
+    def voltage(self):
         raw_r = input("Enter R : ")
         raw_i = input("Enter I : ")
         if "*" in raw_r:
@@ -32,7 +32,7 @@ class Ohm():
         u = float(r*i)
         print(u,"V")
             
-    def amperage():
+    def amperage(self):
         raw_u = input("Enter U : ")
         raw_r = input("Enter R : ")
         if "*" in raw_r:
@@ -59,7 +59,7 @@ class Ohm():
         i = float(u/r)
         print(i, "A")
     
-    def resistence():
+    def resistance(self):
         raw_u = input("Enter U : ")
         raw_i = input("Enter I : ")
         if "*" in raw_u:
@@ -103,13 +103,10 @@ def display_menu():
 
 def ask_user_choice(question:str):
     choice = input(question)
-    choice = input(question)
     try:
-        letter_choice = choice
         letter_choice = choice
     except:
         pass
-    return letter_choice
     return letter_choice
 
 def main():
