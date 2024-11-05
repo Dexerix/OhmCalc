@@ -1,4 +1,5 @@
 import os
+import math
 
 class Ohm():
     def __init__(self) -> None:
@@ -14,6 +15,7 @@ class Ohm():
             exp_split = exposant.split("^", 1)
             power = int(exp_split[1])
             exposant = 10**power
+            
             r = mantisse_r*exposant
         else: 
             r = float(raw_r)
@@ -87,15 +89,47 @@ class Ohm():
         r = float(u/i)
         print(r, "Ω")
 
+    def section(self):
+        diameter = float(input("Enter the diameter(mm) : "))
+        a = round(float((math.pi*(diameter**2)/4)), 2)
+        print(a, "mm2")
+
+    def resistivity(self):
+        raw_r = input("Enter the resistance (Ω) : ")
+        a = float(input("Enter the cable's section (mm2) : "))
+        l = float(input("Enter the lenght (m) : "))
+        if "*" in raw_r:
+            splat_r = raw_r.split("*")
+            mantisse_r = float(splat_r[0])
+            exposant = splat_r[1]
+            exp_split = exposant.split("^", 1)
+            power = int(exp_split[1])
+            exposant = 10**power
+            
+            r = mantisse_r*exposant
+        else: 
+            r = float(raw_r)
+    
+        rho = (r*a)/l
+        print(rho, "Ωmm2/M")
+        
+    def rhosistence(self):
+        rho = float(input("Enter the rho(ρ) : "))
+        l = float(input("Enter the lenght(m) : "))
+        a = float(input("Enter the section (mm2) : "))
+        r = (rho*l)/a
+        print(r, "Ω")
+
 def display_menu():
     menu = "===============================================\n"
     menu += "             Choose your formula\n"
     menu += "-----------------------------------------------\n"
     menu += " U - Voltage\n"
-    menu += " R - Resistance\n"
-    menu += " U - Voltage\n"
-    menu += " R - Resistance\n"
+    menu += " R - Resistance (Ohm's law)\n"
     menu += " I - Current\n"
+    menu += " P - Resistivity\n"
+    menu += " A - Section\n"
+    menu += " O - Resistence (with ρ)\n"
     menu += "...\n"
     menu += ' Q - Quit\n'
     menu += "===============================================\n"
@@ -126,6 +160,15 @@ def main():
             input()
         elif user_choice == "i":
             ohms.current()
+            input()
+        elif user_choice == "p":
+            ohms.resistivity()
+            input()
+        elif user_choice == "a":
+            ohms.section()
+            input()
+        elif user_choice == "o":
+            ohms.rhosistence()
             input()
         elif user_choice == "q":
             is_end_loop = True
