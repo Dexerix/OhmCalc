@@ -13,18 +13,18 @@ def treat_exp(raw_v) -> float:
         float
     '''
     if "*" in raw_v:
-            splat_v = raw_v.split("*")
-            mantisse_v = float(splat_v[0])
-            exposant = splat_v[1]
-            exp_split = exposant.split("^", 1)
-            power = int(exp_split[1])
-            exposant = 10**power
+            split_parts = raw_v.split("*")
+            base_value = float(split_parts[0])
+            exponent = split_parts[1]
+            exp_parts = exponent.split("^", 1)
+            power = int(exp_parts[1])
+            exponent = 10**power
             
-            v = mantisse_v*exposant
+            calculated_value = base_value*exponent
     else: 
-            v = float(raw_v)
+            calculated_value = float(raw_v)
     
-    return v
+    return calculated_value
 
 # Creation of the "Ohm" class
 class Ohm():
@@ -40,7 +40,7 @@ class Ohm():
         i = treat_exp(raw_i)
 
         u = float(r*i)
-        print(u,"V")
+        print(f"{u:.2f} V")
             
     def amperage(self):
         '''Calculates the current using the voltage(Volts) and resistance(Ω)'''
@@ -50,7 +50,7 @@ class Ohm():
         u = treat_exp(raw_u)
 
         i = float(u/r)
-        print(i, "A")
+        print(f"{i:.2f} A")
     
     def resistance(self):
         '''Calculates the resistance using the voltage(Volts) and the current(Ampere)'''
@@ -60,13 +60,13 @@ class Ohm():
         i = treat_exp(raw_i)
         
         r = float(u/i)
-        print(r, "Ω")
+        print(f"{r:.2f} Ω")
 
     def section(self):
         '''Calculates the cable\'s section using the diameter(millimeter)'''
         diameter = float(input("Enter the diameter(mm) : "))
         a = round(float((math.pi*(diameter**2)/4)), 2)
-        print(a, "mm2")
+        print(f"{a:.2f} mm2")
 
     def resistivity(self):
         '''Calculates the resistivity(ρ) using the resistance(Ω), the section(mm2) and the length(meter)'''
@@ -76,7 +76,7 @@ class Ohm():
         r = treat_exp(raw_r)
     
         rho = (r*a)/l
-        print(rho, "Ωmm2/M")
+        print(f"{rho:.2f} Ωmm2/M")
         
     def rhosistence(self):
         '''Calculates the resistance(Ω) using the resitance(ρ), the section(mm2) and the lenght(meter)'''
@@ -84,12 +84,13 @@ class Ohm():
         l = float(input("Enter the lenght(m) : "))
         a = float(input("Enter the section (mm2) : "))
         r = (rho*l)/a
-        print(r, "Ω")
+        print(f"{r:.2f} Ω")
 
     def parallel_resistor(self):
-        askAmoutResistence=int(input('How many resistance are present on the circuit : '))
+        '''Calculates the total resistance of resistors in parallel.'''
+        num_resistors=int(input('How many resistance are present on the circuit : '))
         r_list=[]
-        for idx in range(askAmoutResistence):
+        for idx in range(num_resistors):
             ask_r=input(f'Enter the resistance {idx+1}: ')
             r = treat_exp(ask_r)
             r_list.append(r)
@@ -100,7 +101,24 @@ class Ohm():
                 total_resistance = 1/total_resistance
             else:
                 total_resistance = r_list[0]
-        print(f"The total resistance is: {total_resistance:.2f} Ω")
+        print(f"{total_resistance:.2f} Ω")
+
+    def serial_resistor(self):
+        '''Calculates the total resistance of resistors in serial.'''
+        num_resistors=int(input('How many resistance are present on the circuit : '))
+        r_list=[]
+        for idx in range(num_resistors):
+            ask_r=input(f'Enter the resistance {idx+1}: ')
+            r = treat_exp(ask_r)
+            r_list.append(r)
+            total_resistance = 0
+            if len(r_list) > 1:
+                for r in r_list:
+                    total_resistance += r
+            else:
+                total_resistance = r_list[0]
+        print(f"{total_resistance:.2f} Ω")
+
 
 # Displays the menu
 def display_menu():
@@ -115,6 +133,7 @@ def display_menu():
     menu += " A - Section\n"
     menu += " O - Resistence (with ρ)\n"
     menu += "PR - Parallel Resistance\n"
+    menu += "SR - Serial Resistance\n"
     menu += "...\n"
     menu += ' Q - Quit\n'
     menu += "===============================================\n"
@@ -159,6 +178,9 @@ def main():
             input()
         elif user_choice == "pr":
             ohms.parallel_resistor()
+            input()
+        elif user_choice == "sr":
+            ohms.serial_resistor()
             input()
         elif user_choice == "q":
             is_end_loop = True
