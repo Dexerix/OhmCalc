@@ -9,7 +9,7 @@ def treat_exp(raw_v) -> float:
     Parameter
         raw_v (str) : value from the input
     
-    Return: 
+    Return:
         float
     '''
     if "*" in raw_v:
@@ -86,6 +86,22 @@ class Ohm():
         r = (rho*l)/a
         print(r, "Ω")
 
+    def parallel_resistor(self):
+        askAmoutResistence=int(input('How many resistance are present on the circuit : '))
+        r_list=[]
+        for idx in range(askAmoutResistence):
+            ask_r=input(f'Enter the resistance {idx+1}: ')
+            r = treat_exp(ask_r)
+            r_list.append(r)
+            total_resistance = 0
+            if len(r_list) > 1:
+                for r in r_list:
+                    total_resistance += 1/r
+                total_resistance = 1/total_resistance
+            else:
+                total_resistance = r_list[0]
+        print(f"The total resistance is: {total_resistance:.2f} Ω")
+
 # Displays the menu
 def display_menu():
     '''Print a menu with the available choices'''
@@ -98,6 +114,7 @@ def display_menu():
     menu += " P - Resistivity\n"
     menu += " A - Section\n"
     menu += " O - Resistence (with ρ)\n"
+    menu += "PR - Parallel Resistance\n"
     menu += "...\n"
     menu += ' Q - Quit\n'
     menu += "===============================================\n"
@@ -139,6 +156,9 @@ def main():
             input()
         elif user_choice == "o":
             ohms.rhosistence()
+            input()
+        elif user_choice == "pr":
+            ohms.parallel_resistor()
             input()
         elif user_choice == "q":
             is_end_loop = True
