@@ -129,7 +129,7 @@ def main():
             ohms.resistance()
             input()
         elif user_choice == "i":
-            ohms.current()
+            ohms.amperage()
             input()
         elif user_choice == "p":
             ohms.resistivity()
