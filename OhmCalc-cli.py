@@ -119,10 +119,6 @@ class Ohm():
                 total_resistance = r_list[0]
         print(f"{total_resistance:.2f} Ω")
 
-
-    def serial_resistor(self):
-        pass
-
 # Displays the menu
 def display_menu():
     '''Print a menu with the available choices'''
