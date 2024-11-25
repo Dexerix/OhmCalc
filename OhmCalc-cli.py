@@ -87,9 +87,10 @@ class Ohm():
         print(r, "Ω")
 
     def parallel_resistor(self):
-        askAmoutResistence=int(input('How many resistance are present on the circuit : '))
+        '''Calculates the total resistance of resistors in parallel.'''
+        num_resistors=int(input('How many resistance are present on the circuit : '))
         r_list=[]
-        for idx in range(askAmoutResistence):
+        for idx in range(num_resistors):
             ask_r=input(f'Enter the resistance {idx+1}: ')
             r = treat_exp(ask_r)
             r_list.append(r)
@@ -101,6 +102,9 @@ class Ohm():
             else:
                 total_resistance = r_list[0]
         print(f"The total resistance is: {total_resistance:.2f} Ω")
+
+    def serial_resistor(self):
+        pass
 
 # Displays the menu
 def display_menu():
