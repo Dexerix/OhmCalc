@@ -1,4 +1,5 @@
 import os
+import sys
 import math
 
 def treat_exp(raw_v) -> float:
@@ -183,7 +184,7 @@ def main():
             input()
         elif user_choice == "q":
             is_end_loop = True
-            os.system('cls')
+            os.system('cls' if sys.platform == 'win32' else 'clear')
 
 ohms = Ohm()
 main()
