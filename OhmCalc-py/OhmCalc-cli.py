@@ -2,6 +2,7 @@ import os
 import sys
 import math
 
+
 def treat_exp(raw_v) -> float:
     '''
     Takes the value from the input, checks if the symbol '*' is present.
@@ -54,12 +55,11 @@ class Ohm():
         print(f"{i:.2f} A")
     
     def resistance(self):
-        '''Calculates the resistance using the voltage(Volts) and the current(Ampere)'''
         raw_u = input("Enter U : ")
         raw_i = input("Enter I : ")
         u = treat_exp(raw_u)
         i = treat_exp(raw_i)
-        
+
         r = float(u/i)
         print(f"{r:.2f} Ω")
 
@@ -152,7 +152,7 @@ def main():
     '''Main function'''
     is_end_loop = False
     while not is_end_loop:
-        os.system('cls')
+        os.system('cls' if sys.platform == 'win32' else 'clear')
         display_menu()
         user_choice = ask_user_choice("Your choice : ")
         user_choice = user_choice.lower()
