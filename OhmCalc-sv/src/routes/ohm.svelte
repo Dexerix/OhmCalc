@@ -1,13 +1,14 @@
-function treat_exp(raw_r): number {
-    if ("*" in raw_r) {
+<script lang="ts">
+    function treat_exp(raw_r: string): number {
+    if (raw_r.includes("*")) {
         let parts = raw_r.split("*");
         let base_value = parseFloat(parts[0]);
         let exponent = parts[1];
-        let exp_parts = exponent.split("^",1);
+        let exp_parts = exponent.split("^");
         let power = parseInt(exp_parts[1])
-        exponent = 10**power;
+        let exponent_value = 10**power;
 
-        let calculated_value = base_value * exponent;
+        let calculated_value = base_value * exponent_value;
 
         return calculated_value;
     } else {
@@ -53,3 +54,4 @@ class Ohm {
         return v / i;
     }
 };
+</script>
