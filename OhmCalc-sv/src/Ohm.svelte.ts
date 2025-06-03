@@ -1,6 +1,5 @@
-<script lang="ts">
-    function treat_exp(raw_r: string): number {
-    if (raw_r.includes("*")) {
+function treat_exp(raw_r: string): number {
+    if (raw_r.indexOf("*") !== -1) {
         let parts = raw_r.split("*");
         let base_value = parseFloat(parts[0]);
         let exponent = parts[1];
@@ -42,16 +41,17 @@ class Ohm {
     }
 
     voltage(r:number, i:number): number {
-        return r * i;
-        
+        let v = r * i;
+        return v;
     }
 
     amperage(v:number, r:number): number {
-        return v / r;
+        let a = v / r;
+        return a;
     }
 
     resistance(v:number, i:number): number {
-        return v / i;
+        let r = v / i;
+        return r;
     }
 };
-</script>
