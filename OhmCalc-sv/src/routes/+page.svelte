@@ -1,2 +1,9 @@
-<h1>Hello OhmCalc</h1>
-<p>This is a simple page made to test svelte</p>
+<svelte:options runes={true}></svelte:options>
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+<script lang='ts'>
+    import Header from './Header.svelte';
+    import Menu from './Menu.svelte';
+</script>
+
+<Header />
+<Menu />
